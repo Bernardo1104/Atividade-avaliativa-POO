@@ -4,34 +4,46 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Criando o primeiro produto com informações fornecidas;
-        System.out.println("Informe o nome do primeiro produto:");
-        String nome1 = scanner.nextLine();
-        System.out.println("Informe o preço do primeiro produto:");
-        double preco1 = scanner.nextDouble();
-        produtos produto1 = new produtos(nome1, preco1);
+        // Solicitar capacidade e total de andares do prédio ao usuário
+        System.out.println("Informe a capacidade do elevador:");
+        int capacidade = scanner.nextInt();
+        System.out.println("Informe o total de andares do prédio (desconsiderando o térreo):");
+        int totalAndares = scanner.nextInt();
 
-        // Criando o segundo produto com informações fornecidas;
-        scanner.nextLine();
-        System.out.println("Informe o nome do segundo produto:");
-        String nome2 = scanner.nextLine();
-        System.out.println("Informe o preço do segundo produto:");
-        double preco2 = scanner.nextDouble();
-        produtos produto2 = new produtos(nome2, preco2);
+        // Criar um objeto Elevador
+        andares elevador = new andares(capacidade, totalAndares);
 
-        // Solicite o valor de reajuste;
-        System.out.println("Informe o percentual de reajuste:");
-        double percentual = scanner.nextDouble();
+        // Testar os métodos do elevador
+        while (true) {
+            System.out.println("\nEscolha uma operação:");
+            System.out.println("1 - Entrar no elevador");
+            System.out.println("2 - Sair do elevador");
+            System.out.println("3 - Subir um andar");
+            System.out.println("4 - Descer um andar");
+            System.out.println("0 - Encerrar");
 
-        // Reajustando os preços dos produtos;
-        produto1.reajustaPreco(percentual);
-        produto2.reajustaPreco(percentual);
+            int opcao = scanner.nextInt();
 
-        // Exibindo as informações dos produtos e o último id gerado
-        produto1.exibe();
-        produto2.exibe();
-        System.out.println("Último id gerado: " + produtos.getUltimoId());
-
-        scanner.close();
+            switch (opcao) {
+                case 1:
+                    elevador.entrar();
+                    break;
+                case 2:
+                    elevador.sair();
+                    break;
+                case 3:
+                    elevador.subir();
+                    break;
+                case 4:
+                    elevador.descer();
+                    break;
+                case 0:
+                    System.out.println("Encerrando o programa...");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
     }
 }
