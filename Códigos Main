@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Criando o primeiro produto com informações fornecidas;
+        System.out.println("Informe o nome do primeiro produto:");
+        String nome1 = scanner.nextLine();
+        System.out.println("Informe o preço do primeiro produto:");
+        double preco1 = scanner.nextDouble();
+        produtos produto1 = new produtos(nome1, preco1);
+
+        // Criando o segundo produto com informações fornecidas;
+        scanner.nextLine();
+        System.out.println("Informe o nome do segundo produto:");
+        String nome2 = scanner.nextLine();
+        System.out.println("Informe o preço do segundo produto:");
+        double preco2 = scanner.nextDouble();
+        produtos produto2 = new produtos(nome2, preco2);
+
+        // Solicite o valor de reajuste;
+        System.out.println("Informe o percentual de reajuste:");
+        double percentual = scanner.nextDouble();
+
+        // Reajustando os preços dos produtos;
+        produto1.reajustaPreco(percentual);
+        produto2.reajustaPreco(percentual);
+
+        // Exibindo as informações dos produtos e o último id gerado
+        produto1.exibe();
+        produto2.exibe();
+        System.out.println("Último id gerado: " + produtos.getUltimoId());
+
+        scanner.close();
+    }
+}
